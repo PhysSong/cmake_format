@@ -321,7 +321,6 @@ FUNSPECS = {
       "LINK_OPTIONS": "*",
       "LINK_LIBRARIES": "*",
       "OUTPUT_VARIABLE": "*",
-      "RESULT_VAR": "*",
       "SOURCES": "*"
     }
   },
