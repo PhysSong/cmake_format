@@ -392,10 +392,15 @@ def parse_separate_arguments(ctx, tokens, breakstack):
 
     separate_arguments(<variable> <mode> <args>)
 
+    separate_arguments(<variable>)
+
   :see: https://cmake.org/cmake/help/latest/command/separate_arguments.html
   """
-  flags = ["UNIX_COMMAND", "WINDOWS_COMMAND", "NATIVE_COMMAND"]
-  return StandardArgTree.parse(ctx, tokens, 3, {}, flags, breakstack)
+  second_token = get_nth_semantic_token(tokens, 1)
+  if second_token is not None:
+    flags = ["UNIX_COMMAND", "WINDOWS_COMMAND", "NATIVE_COMMAND"]
+    return StandardArgTree.parse(ctx, tokens, 3, {}, flags, breakstack)
+  return StandardArgTree.parse(ctx, tokens, 1, {}, [], breakstack)
 
 
 def parse_set_source_files_properties(ctx, tokens, breakstack):
